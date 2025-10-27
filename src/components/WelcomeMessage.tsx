@@ -50,7 +50,7 @@ export const WelcomeMessage = ({ visitorName, location, onComplete }: WelcomeMes
                 onClick={onComplete}
                 variant="outline"
                 size="lg"
-                className="text-lg font-medium px-8 py-6 h-auto bg-white hover:bg-white/90"
+                className="text-lg font-medium px-8 py-6 h-auto bg-white hover:bg-red-600 hover:text-white transition-colors"
               >
                 <LogOut className="w-5 h-5 mr-2" />
                 Exit to Main Screen
