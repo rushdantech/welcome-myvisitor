@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
-import { QrCode } from "lucide-react";
+import { QrCode, IdCard } from "lucide-react";
 import { QRCodeSVG } from "qrcode.react";
 import zetrixLogo from "@/assets/zetrix-logo.png";
 import appStoreBadges from "@/assets/app-store-badges.png";
@@ -39,7 +39,7 @@ export const WelcomeScreen = ({ onNewVisitor }: WelcomeScreenProps) => {
           >
             <div className="flex flex-col items-center gap-6">
               <QrCode className="w-32 h-32" />
-              <span>Register Visit</span>
+              <span>Touch here to Register Visit</span>
             </div>
           </Button>
         </div>
@@ -49,9 +49,14 @@ export const WelcomeScreen = ({ onNewVisitor }: WelcomeScreenProps) => {
           <Card className="p-12 h-[600px] max-w-xl w-full shadow-[var(--shadow-card)] border-2 flex flex-col justify-between">
             <div className="space-y-8">
               <div className="bg-accent/10 border-l-4 border-accent p-6 rounded">
-                <p className="text-2xl font-semibold text-foreground leading-relaxed">
-                  Before you proceed, please download the MyID SuperApp to register and download your MyKad or Passport Verifiable Credentials
-                </p>
+                <div className="flex items-start gap-4">
+                  <div className="bg-accent/20 p-3 rounded-lg">
+                    <IdCard className="w-12 h-12 text-accent" />
+                  </div>
+                  <p className="text-2xl font-semibold text-foreground leading-relaxed flex-1">
+                    Before you proceed, please download the MyID SuperApp to register and download your MyKad or Passport Verifiable Credentials
+                  </p>
+                </div>
               </div>
               
               <div className="space-y-6">
