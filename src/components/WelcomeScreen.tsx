@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { QrCode } from "lucide-react";
+import { QRCodeSVG } from "qrcode.react";
 import zetrixLogo from "@/assets/zetrix-logo.png";
 import appStoreBadges from "@/assets/app-store-badges.png";
 
@@ -49,14 +50,26 @@ export const WelcomeScreen = ({ onNewVisitor }: WelcomeScreenProps) => {
                   Scan to download MyID SuperApp
                 </p>
                 
-                <div className="flex flex-col gap-4 items-center">
-                  <a href="https://apps.apple.com/pl/app/myid-super-app/id6749565922" target="_blank" rel="noopener noreferrer">
-                    <img 
-                      src={appStoreBadges} 
-                      alt="Download on App Store and Google Play"
-                      className="w-64 h-auto"
+                <div className="grid grid-cols-2 gap-6 items-center justify-items-center">
+                  <div className="flex flex-col items-center gap-2">
+                    <QRCodeSVG 
+                      value="https://apps.apple.com/pl/app/myid-super-app/id6749565922"
+                      size={120}
+                      level="H"
+                      includeMargin={true}
                     />
-                  </a>
+                    <p className="text-xs font-medium text-muted-foreground">Apple App Store</p>
+                  </div>
+                  
+                  <div className="flex flex-col items-center gap-2">
+                    <QRCodeSVG 
+                      value="https://play.google.com/store/apps"
+                      size={120}
+                      level="H"
+                      includeMargin={true}
+                    />
+                    <p className="text-xs font-medium text-muted-foreground">Google Play</p>
+                  </div>
                 </div>
               </div>
             </div>
