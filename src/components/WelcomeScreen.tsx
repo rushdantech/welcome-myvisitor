@@ -16,7 +16,16 @@ export const WelcomeScreen = ({ onNewVisitor }: WelcomeScreenProps) => {
         <img src={zetrixLogo} alt="Zetrix" className="h-24 object-contain mb-6" />
         <div>
           <h1 className="text-4xl font-bold text-foreground">Welcome to Zetrix Tower</h1>
-          <p className="text-lg text-muted-foreground mt-2">Please register your details</p>
+          <p className="text-2xl text-muted-foreground mt-4">To enter the premises, please register your details.</p>
+          <p className="text-xl text-muted-foreground/80 mt-2">{new Date().toLocaleString('en-MY', { 
+            weekday: 'long',
+            year: 'numeric',
+            month: 'long',
+            day: 'numeric',
+            hour: '2-digit',
+            minute: '2-digit',
+            hour12: true
+          })}</p>
         </div>
       </div>
       
@@ -30,7 +39,7 @@ export const WelcomeScreen = ({ onNewVisitor }: WelcomeScreenProps) => {
           >
             <div className="flex flex-col items-center gap-6">
               <QrCode className="w-32 h-32" />
-              <span>New Visitor</span>
+              <span>Register Visit</span>
             </div>
           </Button>
         </div>
@@ -41,7 +50,7 @@ export const WelcomeScreen = ({ onNewVisitor }: WelcomeScreenProps) => {
             <div className="space-y-8">
               <div className="bg-accent/10 border-l-4 border-accent p-6 rounded">
                 <p className="text-2xl font-semibold text-foreground leading-relaxed">
-                  Notice: Please download the MyID SuperApp to register and download your MyKad Verifiable Credentials to enter the premises.
+                  Before you proceed, please download the MyID SuperApp to register and download your MyKad or Passport Verifiable Credentials
                 </p>
               </div>
               
