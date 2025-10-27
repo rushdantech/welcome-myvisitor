@@ -8,7 +8,7 @@ interface LocationSelectionProps {
 }
 
 const locations = [
-  { id: "customer-service", name: "Customer Service" },
+  { id: "customer-service", name: "Customer\nService" },
   { id: "level-43a", name: "Level 43A" },
   { id: "level-46", name: "Level 46" },
 ];
@@ -41,7 +41,7 @@ export const LocationSelection = ({ onLocationSelect }: LocationSelectionProps) 
                   size="lg"
                   className="h-32 text-2xl font-semibold bg-gradient-to-br from-primary to-primary/80 hover:from-primary hover:to-primary/90 shadow-md hover:shadow-lg transition-all duration-300 hover:scale-[1.05] rounded-xl"
                 >
-                  {location.name}
+                  <span className="whitespace-pre-line">{location.name}</span>
                 </Button>
               ))}
             </div>
