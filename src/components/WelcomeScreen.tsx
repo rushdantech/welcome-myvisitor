@@ -2,6 +2,7 @@ import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { QrCode } from "lucide-react";
 import zetrixLogo from "@/assets/zetrix-logo.png";
+import appStoreBadges from "@/assets/app-store-badges.png";
 
 interface WelcomeScreenProps {
   onNewVisitor: () => void;
@@ -10,8 +11,12 @@ interface WelcomeScreenProps {
 export const WelcomeScreen = ({ onNewVisitor }: WelcomeScreenProps) => {
   return (
     <div className="min-h-screen bg-gradient-to-br from-background via-muted to-background flex flex-col p-8">
-      <div className="mb-8">
+      <div className="mb-8 flex items-center justify-between">
         <img src={zetrixLogo} alt="Zetrix" className="h-16 object-contain" />
+        <div className="text-center flex-1">
+          <h1 className="text-4xl font-bold text-foreground">Welcome to Zetrix Tower</h1>
+          <p className="text-lg text-muted-foreground mt-2">Please register your details</p>
+        </div>
       </div>
       
       <div className="flex-1 grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-7xl mx-auto w-full">
@@ -20,7 +25,7 @@ export const WelcomeScreen = ({ onNewVisitor }: WelcomeScreenProps) => {
           <Button
             onClick={onNewVisitor}
             size="lg"
-            className="h-80 w-full max-w-md text-4xl font-bold bg-gradient-to-br from-primary to-primary/80 hover:from-primary hover:to-primary/90 shadow-[var(--shadow-elegant)] transition-all duration-300 hover:scale-[1.02] rounded-3xl"
+            className="h-80 w-full max-w-md text-4xl font-bold bg-gradient-to-br from-accent to-accent/80 hover:from-accent hover:to-accent/90 shadow-[var(--shadow-elegant)] transition-all duration-300 hover:scale-[1.02] rounded-3xl"
           >
             <div className="flex flex-col items-center gap-4">
               <QrCode className="w-20 h-20" />
@@ -44,28 +49,14 @@ export const WelcomeScreen = ({ onNewVisitor }: WelcomeScreenProps) => {
                   Scan to download MyID SuperApp
                 </p>
                 
-                <div className="grid grid-cols-2 gap-4">
-                  <div className="space-y-2">
-                    <div className="bg-white p-4 rounded-lg shadow-sm">
-                      <img 
-                        src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://play.google.com/store/apps/details?id=my.mimos.mydigitalsuper%26hl=en" 
-                        alt="Android QR Code"
-                        className="w-full h-auto"
-                      />
-                    </div>
-                    <p className="text-xs text-center text-muted-foreground font-medium">Android</p>
-                  </div>
-                  
-                  <div className="space-y-2">
-                    <div className="bg-white p-4 rounded-lg shadow-sm">
-                      <img 
-                        src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://apps.apple.com/pl/app/myid-super-app/id6749565922" 
-                        alt="iOS QR Code"
-                        className="w-full h-auto"
-                      />
-                    </div>
-                    <p className="text-xs text-center text-muted-foreground font-medium">iOS</p>
-                  </div>
+                <div className="flex flex-col gap-4 items-center">
+                  <a href="https://apps.apple.com/pl/app/myid-super-app/id6749565922" target="_blank" rel="noopener noreferrer">
+                    <img 
+                      src={appStoreBadges} 
+                      alt="Download on App Store and Google Play"
+                      className="w-64 h-auto"
+                    />
+                  </a>
                 </div>
               </div>
             </div>
