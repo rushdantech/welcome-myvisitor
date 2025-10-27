@@ -19,13 +19,13 @@ export const WelcomeScreen = ({ onNewVisitor }: WelcomeScreenProps) => {
         </div>
       </div>
       
-      <div className="flex-1 grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-6xl mx-auto w-full items-center">
+      <div className="flex-1 grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-7xl mx-auto w-full">
         {/* Left Side - New Visitor Button */}
-        <div className="flex items-stretch justify-center">
+        <div className="flex items-center justify-center">
           <Button
             onClick={onNewVisitor}
             size="lg"
-            className="h-[400px] w-full max-w-lg text-4xl font-bold bg-gradient-to-br from-accent to-accent/80 hover:from-accent hover:to-accent/90 shadow-[var(--shadow-elegant)] transition-all duration-300 hover:scale-[1.02] rounded-3xl"
+            className="h-80 w-full max-w-md text-4xl font-bold bg-gradient-to-br from-accent to-accent/80 hover:from-accent hover:to-accent/90 shadow-[var(--shadow-elegant)] transition-all duration-300 hover:scale-[1.02] rounded-3xl"
           >
             <div className="flex flex-col items-center gap-4">
               <QrCode className="w-20 h-20" />
@@ -35,8 +35,8 @@ export const WelcomeScreen = ({ onNewVisitor }: WelcomeScreenProps) => {
         </div>
 
         {/* Right Side - Notice and QR Codes */}
-        <div className="flex items-stretch justify-center">
-          <Card className="p-8 max-w-lg w-full h-[400px] flex flex-col justify-center shadow-[var(--shadow-card)] border-2">
+        <div className="flex items-center justify-center">
+          <Card className="p-8 max-w-md w-full shadow-[var(--shadow-card)] border-2">
             <div className="space-y-6">
               <div className="bg-accent/10 border-l-4 border-accent p-4 rounded">
                 <p className="text-lg font-semibold text-foreground leading-relaxed">
