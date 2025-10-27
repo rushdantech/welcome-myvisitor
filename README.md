@@ -62,7 +62,26 @@ This project is built with:
 
 ## How can I deploy this project?
 
-Simply open [Lovable](https://lovable.dev/projects/01016dfd-2719-4a1c-8b56-0ef2770fa133) and click on Share -> Publish.
+### GitHub Pages Deployment
+
+This project is automatically deployed to GitHub Pages using GitHub Actions. The deployment process is triggered whenever changes are pushed to the main branch.
+
+#### Deployment Process
+1. Push your changes to the main branch
+2. GitHub Actions will automatically:
+   - Build the project
+   - Deploy it to GitHub Pages
+3. Visit the deployed site at: https://[your-username].github.io/welcome-myvisitor/
+
+#### Manual Deployment
+You can also trigger the deployment manually:
+1. Go to the Actions tab in your GitHub repository
+2. Select the "Deploy to GitHub Pages" workflow
+3. Click "Run workflow"
+
+### Alternative Deployment
+
+You can also deploy through Lovable by opening [Lovable](https://lovable.dev/projects/01016dfd-2719-4a1c-8b56-0ef2770fa133) and clicking on Share -> Publish.
 
 ## Can I connect a custom domain to my Lovable project?
 
