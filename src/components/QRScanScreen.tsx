@@ -3,14 +3,15 @@ import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Progress } from "@/components/ui/progress";
 import { QRCodeSVG } from "qrcode.react";
-import { Loader2, Scan } from "lucide-react";
+import { Loader2, Scan, ArrowLeft } from "lucide-react";
 import zetrixLogo from "@/assets/zetrix-logo.png";
 
 interface QRScanScreenProps {
   onVerified: (visitorName: string) => void;
+  onBack: () => void;
 }
 
-export const QRScanScreen = ({ onVerified }: QRScanScreenProps) => {
+export const QRScanScreen = ({ onVerified, onBack }: QRScanScreenProps) => {
   const [progress, setProgress] = useState(0);
   const [timeLeft, setTimeLeft] = useState(600); // 10 minutes in seconds
   const verificationUrl = "myid://verify?request=visitor_registration&location=zetrix_tower";
@@ -54,7 +55,16 @@ export const QRScanScreen = ({ onVerified }: QRScanScreenProps) => {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-background via-muted to-background flex flex-col p-8">
-      <div className="mb-8">
+      <div className="mb-8 flex items-center">
+        <Button
+          onClick={onBack}
+          variant="ghost"
+          size="lg"
+          className="mr-auto text-lg font-medium hover:bg-red-600 hover:text-white transition-colors"
+        >
+          <ArrowLeft className="w-5 h-5 mr-2" />
+          Back
+        </Button>
         <img src={zetrixLogo} alt="Zetrix" className="h-16 object-contain" />
       </div>
 

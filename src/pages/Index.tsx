@@ -37,7 +37,10 @@ const Index = () => {
         <WelcomeScreen onNewVisitor={handleNewVisitor} />
       )}
       {currentScreen === "qr-scan" && (
-        <QRScanScreen onVerified={handleVerified} />
+        <QRScanScreen 
+          onVerified={handleVerified}
+          onBack={() => setCurrentScreen("welcome")}
+        />
       )}
       {currentScreen === "location" && (
         <LocationSelection onLocationSelect={handleLocationSelect} />
