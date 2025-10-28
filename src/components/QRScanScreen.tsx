@@ -55,17 +55,20 @@ export const QRScanScreen = ({ onVerified, onBack }: QRScanScreenProps) => {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-background via-muted to-background flex flex-col p-8">
-      <div className="mb-8 flex items-center">
+      <div className="mb-8">
+        <img src={zetrixLogo} alt="Zetrix" className="h-16 object-contain" />
+      </div>
+      
+      <div className="absolute top-8 left-1/2 -translate-x-1/2">
         <Button
           onClick={onBack}
-          variant="ghost"
+          variant="outline"
           size="lg"
-          className="mr-auto text-lg font-medium hover:bg-red-600 hover:text-white transition-colors"
+          className="h-16 px-8 text-2xl font-medium bg-white hover:bg-red-600 hover:text-white transition-colors shadow-lg rounded-full border-2"
         >
-          <ArrowLeft className="w-5 h-5 mr-2" />
-          Back
+          <ArrowLeft className="w-8 h-8 mr-3" strokeWidth={2.5} />
+          Back to Main Screen
         </Button>
-        <img src={zetrixLogo} alt="Zetrix" className="h-16 object-contain" />
       </div>
 
       <div className="flex-1 flex items-center justify-center">
