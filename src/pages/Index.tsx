@@ -1,17 +1,24 @@
 import { useState } from "react";
 import { WelcomeScreen } from "@/components/WelcomeScreen";
+import { SelectIDType } from "@/components/SelectIDType";
 import { QRScanScreen } from "@/components/QRScanScreen";
 import { LocationSelection } from "@/components/LocationSelection";
 import { WelcomeMessage } from "@/components/WelcomeMessage";
 
-type Screen = "welcome" | "qr-scan" | "location" | "thank-you";
+type Screen = "welcome" | "select-id-type" | "qr-scan" | "location" | "thank-you";
 
 const Index = () => {
   const [currentScreen, setCurrentScreen] = useState<Screen>("welcome");
   const [visitorName, setVisitorName] = useState("");
   const [selectedLocation, setSelectedLocation] = useState("");
+  const [selectedIDType, setSelectedIDType] = useState<"mykad" | "passport" | "">("");
 
   const handleNewVisitor = () => {
+    setCurrentScreen("select-id-type");
+  };
+
+  const handleIDTypeSelect = (idType: "mykad" | "passport") => {
+    setSelectedIDType(idType);
     setCurrentScreen("qr-scan");
   };
 
@@ -29,6 +36,7 @@ const Index = () => {
     setCurrentScreen("welcome");
     setVisitorName("");
     setSelectedLocation("");
+    setSelectedIDType("");
   };
 
   return (
@@ -36,10 +44,16 @@ const Index = () => {
       {currentScreen === "welcome" && (
         <WelcomeScreen onNewVisitor={handleNewVisitor} />
       )}
+      {currentScreen === "select-id-type" && (
+        <SelectIDType 
+          onIDTypeSelect={handleIDTypeSelect}
+          onBack={() => setCurrentScreen("welcome")}
+        />
+      )}
       {currentScreen === "qr-scan" && (
         <QRScanScreen 
           onVerified={handleVerified}
-          onBack={() => setCurrentScreen("welcome")}
+          onBack={() => setCurrentScreen("select-id-type")}
         />
       )}
       {currentScreen === "location" && (
