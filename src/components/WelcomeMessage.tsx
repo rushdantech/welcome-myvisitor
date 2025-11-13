@@ -3,6 +3,7 @@ import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Check, LogOut } from "lucide-react";
 import zetrixLogo from "@/assets/zetrix-logo.png";
+import { getLocationLabel } from "@/lib/locations";
 
 interface WelcomeMessageProps {
   visitorName: string;
@@ -41,7 +42,7 @@ export const WelcomeMessage = ({ visitorName, location, onComplete }: WelcomeMes
                 Welcome to Zetrix Tower
               </p>
               <p className="text-2xl text-muted-foreground">
-                Please proceed to {location}
+                Please proceed to {getLocationLabel(location)}
               </p>
             </div>
 

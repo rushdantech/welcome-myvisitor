@@ -11,6 +11,8 @@ const Index = () => {
   const [currentScreen, setCurrentScreen] = useState<Screen>("welcome");
   const [visitorName, setVisitorName] = useState("");
   const [selectedLocation, setSelectedLocation] = useState("");
+  const [selectedPurpose, setSelectedPurpose] = useState("");
+  const [contactNumber, setContactNumber] = useState("");
   const [selectedIDType, setSelectedIDType] = useState<"mykad" | "passport" | "">("");
 
   const handleNewVisitor = () => {
@@ -27,8 +29,14 @@ const Index = () => {
     setCurrentScreen("location");
   };
 
-  const handleLocationSelect = (location: string) => {
-    setSelectedLocation(location);
+  const handleLocationSelect = (data: {
+    location: string;
+    purpose: string;
+    contactNumber: string;
+  }) => {
+    setSelectedLocation(data.location);
+    setSelectedPurpose(data.purpose);
+    setContactNumber(data.contactNumber);
     setCurrentScreen("thank-you");
   };
 
@@ -36,6 +44,8 @@ const Index = () => {
     setCurrentScreen("welcome");
     setVisitorName("");
     setSelectedLocation("");
+    setSelectedPurpose("");
+    setContactNumber("");
     setSelectedIDType("");
   };
 
@@ -57,7 +67,10 @@ const Index = () => {
         />
       )}
       {currentScreen === "location" && (
-        <LocationSelection onLocationSelect={handleLocationSelect} />
+        <LocationSelection 
+          onLocationSelect={handleLocationSelect}
+          onBack={() => setCurrentScreen("qr-scan")}
+        />
       )}
       {currentScreen === "thank-you" && (
         <WelcomeMessage
