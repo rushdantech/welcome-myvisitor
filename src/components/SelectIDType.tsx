@@ -2,15 +2,25 @@ import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { IdCard, ArrowLeft } from "lucide-react";
 import zetrixLogo from "@/assets/zetrix-logo.png";
+import { usePageTimeout } from "@/hooks/use-page-timeout";
+import { PageTimeoutTimer } from "@/components/PageTimeoutTimer";
 
 interface SelectIDTypeProps {
   onIDTypeSelect: (idType: "mykad" | "passport") => void;
   onBack: () => void;
+  onTimeout: () => void;
 }
 
-export const SelectIDType = ({ onIDTypeSelect, onBack }: SelectIDTypeProps) => {
+export const SelectIDType = ({ onIDTypeSelect, onBack, onTimeout }: SelectIDTypeProps) => {
+  const { formattedTime, isWarning } = usePageTimeout({
+    timeoutSeconds: 60,
+    warningThreshold: 10,
+    onTimeout: onTimeout,
+  });
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-background via-muted to-background flex flex-col p-8">
+      <PageTimeoutTimer timeLeft={formattedTime} isWarning={isWarning} />
       <div className="mb-8">
         <img src={zetrixLogo} alt="Zetrix" className="h-16 object-contain" />
       </div>

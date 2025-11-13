@@ -4,6 +4,8 @@ import { Button } from "@/components/ui/button";
 import { Check, LogOut } from "lucide-react";
 import zetrixLogo from "@/assets/zetrix-logo.png";
 import { getLocationLabel } from "@/lib/locations";
+import { usePageTimeout } from "@/hooks/use-page-timeout";
+import { PageTimeoutTimer } from "@/components/PageTimeoutTimer";
 
 interface WelcomeMessageProps {
   visitorName: string;
@@ -12,8 +14,15 @@ interface WelcomeMessageProps {
 }
 
 export const WelcomeMessage = ({ visitorName, location, onComplete }: WelcomeMessageProps) => {
+  const { formattedTime, isWarning } = usePageTimeout({
+    timeoutSeconds: 60,
+    warningThreshold: 10,
+    onTimeout: onComplete,
+  });
+
   useEffect(() => {
-    // Return to welcome screen after 5 seconds
+    // Return to welcome screen after 5 seconds (original behavior)
+    // But timeout will override this if it expires first
     const timer = setTimeout(() => {
       onComplete();
     }, 5000);
@@ -23,6 +32,7 @@ export const WelcomeMessage = ({ visitorName, location, onComplete }: WelcomeMes
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-red-700 via-red-800 to-blue-900 flex flex-col p-8">
+      <PageTimeoutTimer timeLeft={formattedTime} isWarning={isWarning} />
       <div className="mb-8">
         <img src={zetrixLogo} alt="Zetrix" className="h-16 object-contain brightness-0 invert" />
       </div>

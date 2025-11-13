@@ -58,18 +58,21 @@ const Index = () => {
         <SelectIDType 
           onIDTypeSelect={handleIDTypeSelect}
           onBack={() => setCurrentScreen("welcome")}
+          onTimeout={handleComplete}
         />
       )}
       {currentScreen === "qr-scan" && (
         <QRScanScreen 
           onVerified={handleVerified}
           onBack={() => setCurrentScreen("select-id-type")}
+          onTimeout={handleComplete}
         />
       )}
       {currentScreen === "location" && (
         <LocationSelection 
           onLocationSelect={handleLocationSelect}
           onBack={() => setCurrentScreen("qr-scan")}
+          onTimeout={handleComplete}
         />
       )}
       {currentScreen === "thank-you" && (

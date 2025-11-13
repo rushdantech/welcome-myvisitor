@@ -13,6 +13,8 @@ import { MapPin, ArrowLeft } from "lucide-react";
 import zetrixLogo from "@/assets/zetrix-logo.png";
 import { Numpad } from "@/components/Numpad";
 import { locations } from "@/lib/locations";
+import { usePageTimeout } from "@/hooks/use-page-timeout";
+import { PageTimeoutTimer } from "@/components/PageTimeoutTimer";
 
 interface LocationSelectionProps {
   onLocationSelect: (data: {
@@ -21,6 +23,7 @@ interface LocationSelectionProps {
     contactNumber: string;
   }) => void;
   onBack: () => void;
+  onTimeout: () => void;
 }
 
 const purposes = [
@@ -33,10 +36,16 @@ const purposes = [
   { value: "remittance", label: "Remittance" },
 ];
 
-export const LocationSelection = ({ onLocationSelect, onBack }: LocationSelectionProps) => {
+export const LocationSelection = ({ onLocationSelect, onBack, onTimeout }: LocationSelectionProps) => {
   const [selectedLocation, setSelectedLocation] = useState("");
   const [selectedPurpose, setSelectedPurpose] = useState("");
   const [contactNumber, setContactNumber] = useState("");
+
+  const { formattedTime, isWarning } = usePageTimeout({
+    timeoutSeconds: 60,
+    warningThreshold: 10,
+    onTimeout: onTimeout,
+  });
 
   const handleContinue = () => {
     if (selectedLocation && selectedPurpose && contactNumber) {
@@ -52,6 +61,7 @@ export const LocationSelection = ({ onLocationSelect, onBack }: LocationSelectio
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-background via-muted to-background flex flex-col p-8">
+      <PageTimeoutTimer timeLeft={formattedTime} isWarning={isWarning} />
       <div className="mb-8">
         <img src={zetrixLogo} alt="Zetrix" className="h-16 object-contain" />
       </div>
